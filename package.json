@@ -1,0 +1,20 @@
+{
+  "name": "mosaic-blocks",
+  "version": "1.0.0",
+  "description": "A browser block puzzle with custom photo and texture skins.",
+  "main": "game.js",
+  "scripts": {
+    "smoke": "node scripts/playwright-smoke.js",
+    "test": "npm run smoke"
+  },
+  "keywords": [
+    "block-puzzle",
+    "customizer",
+    "browser-game"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "playwright": "^1.61.1"
+  }
+}

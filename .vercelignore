@@ -1,0 +1,5 @@
+node_modules/
+playwright-*.png
+scripts/
+.git/
+.gitignore

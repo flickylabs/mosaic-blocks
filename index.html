@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mosaic Blocks</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main id="appShell" class="app-shell" data-view="play">
+      <nav class="view-switch" aria-label="화면 선택">
+        <button class="view-button is-active" type="button" data-view-button="play" aria-pressed="true">Player</button>
+        <button class="view-button" type="button" data-view-button="maker" aria-pressed="false">Maker</button>
+      </nav>
+
+      <section class="play-area" aria-label="게임">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Mosaic Blocks</p>
+            <h1>블록 캔버스</h1>
+          </div>
+          <div class="score-strip" aria-label="점수판">
+            <div class="score-box">
+              <span>점수</span>
+              <strong id="score">0</strong>
+            </div>
+            <div class="score-box">
+              <span>최고</span>
+              <strong id="bestScore">0</strong>
+            </div>
+            <div class="score-box">
+              <span>콤보</span>
+              <strong id="combo">0</strong>
+            </div>
+          </div>
+        </header>
+
+        <div class="game-layout">
+          <div class="board-wrap">
+            <div id="board" class="board" aria-label="8 x 8 보드"></div>
+            <div id="gameMessage" class="game-message" hidden>
+              <strong>게임 종료</strong>
+              <button id="restartFromOverlay" type="button">다시 시작</button>
+            </div>
+          </div>
+
+          <aside class="tray-panel" aria-label="블록 후보">
+            <div class="tray-head">
+              <h2>블록 후보</h2>
+              <button id="newGame" class="icon-button" type="button" title="새 게임" aria-label="새 게임">
+                ↻
+              </button>
+            </div>
+            <div id="pieceTray" class="piece-tray"></div>
+            <div class="status-line">
+              <span id="statusText">3개 중 하나를 고르세요</span>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="workshop" aria-label="스킨 메이커">
+        <header class="section-head">
+          <div>
+            <p class="eyebrow">Workshop</p>
+            <h2>스킨 메이커</h2>
+          </div>
+          <button id="randomizeSkin" class="secondary-button" type="button">랜덤</button>
+        </header>
+
+        <div class="tool-row mode-row" role="group" aria-label="편집 모드">
+          <button class="mode-button is-active" type="button" data-mode="paint">색칠</button>
+          <button class="mode-button" type="button" data-mode="erase">지우기</button>
+          <button class="mode-button" type="button" data-mode="photo">사진</button>
+        </div>
+
+        <div class="palette" aria-label="색상 팔레트">
+          <button class="swatch is-active" type="button" data-color="#ff6b6b" style="--swatch: #ff6b6b" aria-label="코럴"></button>
+          <button class="swatch" type="button" data-color="#2ec4b6" style="--swatch: #2ec4b6" aria-label="민트"></button>
+          <button class="swatch" type="button" data-color="#ffca3a" style="--swatch: #ffca3a" aria-label="옐로"></button>
+          <button class="swatch" type="button" data-color="#6a4c93" style="--swatch: #6a4c93" aria-label="바이올렛"></button>
+          <button class="swatch" type="button" data-color="#3a86ff" style="--swatch: #3a86ff" aria-label="블루"></button>
+          <button class="swatch" type="button" data-color="#1f2933" style="--swatch: #1f2933" aria-label="차콜"></button>
+          <label class="color-input" title="사용자 색상">
+            <input id="colorPicker" type="color" value="#ff6b6b" aria-label="사용자 색상" />
+          </label>
+        </div>
+
+        <div class="photo-tools">
+          <label class="file-button">
+            <input id="photoInput" type="file" accept="image/*" />
+            사진 선택
+          </label>
+          <button id="applyPhoto" class="secondary-button" type="button" disabled>입히기</button>
+        </div>
+
+        <div class="texture-strip" aria-label="텍스처 프리셋">
+          <button class="texture-button texture-neon" type="button" data-texture="neon">네온</button>
+          <button class="texture-button texture-candy" type="button" data-texture="candy">캔디</button>
+          <button class="texture-button texture-stone" type="button" data-texture="stone">스톤</button>
+        </div>
+
+        <div id="editorGrid" class="editor-grid" aria-label="선택 블록 편집"></div>
+
+        <div class="action-row">
+          <button id="applyToAll" class="primary-button" type="button">팩 적용</button>
+          <button id="savePack" class="secondary-button" type="button">팩 저장</button>
+        </div>
+      </section>
+    </main>
+
+    <div id="dragGhost" class="drag-ghost" hidden></div>
+
+    <script src="game.js"></script>
+  </body>
+</html>
